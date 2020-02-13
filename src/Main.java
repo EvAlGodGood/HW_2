@@ -77,13 +77,15 @@ public class Main {
             }
         }
         System.out.printf("В данном массиве %s-й элемент является максимальным и равен %s\n" +
-                "%s-й является минимальным и равен %s", indexMax, max, indexMin, min);
+                "%s-й является минимальным и равен %s \n", indexMax, max, indexMin, min);
 
         //6. ** Написать метод, в который передается не пустой одномерный целочисленный массив,
         //метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой
         //части массива равны. Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
         //checkBalance([1, 1, 1, || 2, 1]) → true, граница показана символами ||, эти символы в массив не входят.
-       // System.out.println("Задание_6");
+        System.out.println("Задание_6");
+        int[] arr6 = {1,2,5,1,2,7,8,10,1};
+        System.out.println(checkBalance(arr6));
 
         //7. **** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным,
         // или отрицательным), при этом метод должен сместить все элементы массива на n позиций. Для усложнения задачи
@@ -95,6 +97,29 @@ public class Main {
         moveArr(arr7, -1);
 
     }
+
+    public static boolean checkBalance(int[] arr){
+        int summL = arr[0];
+        int summR = arr[arr.length-1];
+        int kL,kR;
+        kL=kR=0;
+
+        for (int i=0; i < arr.length-2; i++)
+            if (summL<summR){
+                kL++;
+                summL=summL+arr[kL];
+            } else {
+                kR++;
+                summR=summR+arr[arr.length-1-kR];
+            };
+        if (summL==summR){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     public static void moveArr (int[] arr, int pos){
         if (pos>0){
             moveR(arr, pos);
