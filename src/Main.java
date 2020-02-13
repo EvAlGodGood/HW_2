@@ -57,7 +57,7 @@ public class Main {
         //5. ** Задать одномерный массив и найти в нем минимальный и максимальный элементы (без помощи интернета);
         System.out.println("Задание_5");
         Random rand = new Random();
-        int len = 15;
+        int len = 10;
         byte[] arr5 = new byte[len];
         byte min, indexMin, max, indexMax;
         for (int i = 0; i < len; i++) {
@@ -83,9 +83,46 @@ public class Main {
         //метод должен вернуть true, если в массиве есть место, в котором сумма левой и правой
         //части массива равны. Примеры: checkBalance([2, 2, 2, 1, 2, 2, || 10, 1]) → true,
         //checkBalance([1, 1, 1, || 2, 1]) → true, граница показана символами ||, эти символы в массив не входят.
+       // System.out.println("Задание_6");
 
         //7. **** Написать метод, которому на вход подается одномерный массив и число n (может быть положительным,
         // или отрицательным), при этом метод должен сместить все элементы массива на n позиций. Для усложнения задачи
         // нельзя пользоваться вспомогательными массивами.
+        System.out.println("Задание_7");
+        int arr7[] = {0, 1, 2, 3, 5, 6, 7, 8};
+        System.out.println(Arrays.toString(arr7));
+        moveArr(arr7, 1);
+        moveArr(arr7, -1);
+
     }
+    public static void moveArr (int[] arr, int pos){
+        if (pos>0){
+            moveR(arr, pos);
+        } else {
+            moveL(arr, pos*-1);
+        }
+    }
+
+    public static void moveR ( int[] arr, int pos){
+        for (int i = 0; i < pos; i++) {
+            int buf = arr[arr.length - 1];
+            for (int j = arr.length - 1; j > 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[0] = buf;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
+    public static void moveL (int[] arr, int pos){
+        for (int i = arr.length; i > pos; i--) {
+            int buf = arr[arr.length - 1];
+            for (int j = arr.length - 1; j > 0; j--) {
+                arr[j] = arr[j - 1];
+            }
+            arr[0] = buf;
+        }
+        System.out.println(Arrays.toString(arr));
+    }
+
 }
